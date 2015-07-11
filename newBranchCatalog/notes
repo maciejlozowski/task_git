@@ -1,0 +1,182 @@
+ins-mode
+ls-mode   -> dolaczanie, podgladanie mudolow podlaczanych do jadra
+ansi posix
+bash
+bash.0x1fff.com
+
+polecenia 
+
+file --> mowi nam jaki rodzaj pliku
+
+ps -listowanie procesow, pstree --w formie drzewa procesy, pideof -id
+pgrep -- zmiana nazwy  top - menadzer zadan, proc --plik, w ktorym sa wyswietlane procesy
+who--kto jest zalogowany
+users  -- > uzytkownicy z ostatnim logiem
+
+
+pidof pgrep
+
+rtfm
+
+pisof -a  jedno id
+-c wyseitla id's procesow, ktore sa uruchomione z tego samego katalogu roota, jesli user nie jest wlascicielem
+-n 
+-x wyswietla takze id skryptow uruchomionych w powloce
+-o mowi by ominac jakis proces z danym id
+
+ pgrep -u root sshd -- wyswietla liste procesow z nazwa sshd, ktorych wlascicielem jest root
+ pgrep -u root, daemon -- procesy ktorych wlascicielem jest root albo deamon
+sprawdza procesy oparte na nazwie ogolnie pgrep
+-c 
+-d delimiter rzuca string z procesami separujac  je
+-f full 
+g - laczy procesy w grupe z jakims wspolnym ID
+-G 
+-l
+-a
+-n bierze tylko najnowsze z polaczaonych procesow
+-o najstarsze
+-P bierze procesy, ktoprych rodzicem jest proces, ktorego id podamy
+-s laczy procesy z id danej sesji
+-t 
+-u 
+-U
+-v neguje polaczenie procesow
+-w pokazuje watki procesow(przyda sie)
+-x pokazuje te procesy, ktore dokladnie pasuja do patterna
+-F czyta z pliku ID
+--n laczy procesy, ktore sa w tym samym namespace, wymagane by wlaczyc jako root laczenie procesow innych userow
+-V info o wersji procesu
+pkill -- -HUP syslogd -tworzy syslog
+
+
+
+mkdir -p d1/d2 tworzy katalog i jego parenta
+mkdir -m mask of persmissions
+
+cp--backup -- tworzy kopie tego ,ktorego kopiujemy
+cp-f jesli koncowy nie moze byc otwarty to usuwa i wraca
+cp-r kopiowanie rekurencyjne-- zeby skopiowac caly folder
+rm-rf usuwa folder rekurencyjnie
+mv  f1 d1/ przenosi plik do danego katalogu 
+mv-f
+
+find -p find -regex find-type 
+find / -type<T>(szukanie po typiew < > wpisujemy typ pliku)  -p szukamy pliku po masce praw np -p 755... -name  po nazwie "^p" zaczynajace sie od p --exec "rm-f" dla kazdego znalezionego wykonaj
+
+chmod 755 4 -r  2-w 1-x -r przelacza rekursywnie
+chown chown user:group user:group 
+
+top-h wyswietla obecna wersja biblioteki -b wlacza batchmode nieo przyjmuje polecen -H wyswietla pojedynczy watek
+proc -    proc /proc/<PID>/ wazne
+program prog --x =5 command line ,z ktorym zostal uruchomiony
+kill -l zwraca liste nazw sygnalow -L zwraca to samo w tabeli kill-1-9 <pid> ubijeamy     kill-9 'pidof prog' zwraca nam id procesu, ktory zostanie ubity
+
+useradd
+userdel
+usermod zablokowac i odblokowac haslo --> np. gdy ktos atakuje brute force, to blokuje 
+
+users-- wyswietla w liscie userow 
+who -- kto jest zalogowany  -on razem z info zczasami roznymi etc -dead martwe procesy tez apptime systemu etc. fails in system
+
+grep - kasuje z wzorcem -i wtedy wielkosc litery nie ma znaczenia dla wzorca, grp prog -file szukamy w jakims pliku,   -e"*" z wyrazeniem regul,  --color podswietla na czerwono wystapienie wyrazenia, -c ile znalazlo dopasowan, -d  nazwa pliku i nr linii, -A 3 3 linie po, -B 3 linie po, -n poda nr linii, -h poda naazwe pliku, -x dopasuje tylko cale linie, -e wyrazenie -v --te ktore do tego nie pasuja, 
+cat -- laczy plik ze strumieniem, wypisywanie znakow z plikow, cat file | grep
+passwd --poazwala zmienic haslo, -delete usuwa haslo -zostawia puste, -e expires, wymusza zmiane hasla na userze(po dacie),  i-wylacza konto, jesli bedzie expires, wywala ja, -n minimalna ilosc zmian 
+
+find, grep --> najwazniejsze
+ls-l ---color --pokoloruje wykonywalne i katalogi -a wyswietli tez pliki ukryte
+
+edycja powloki grep -i --> mozemy zrobic alias --> w pliku bash.rc   (kropka to pliki ukryte)   ~/.bash.rc alias ll ="ls-la--color" alias do koloru
+np. igrep = "grep-i --color"
+
+VIM:edycja plikow  -->  VIM model editor ------->  edytor modalny(kilka modow) wciskamy 'i' imozemy pisac...h,j,k,l poruszanie sie w nomodzie, I to tryb nadpisywania, v - copy, x-cut, p-paste, :w zapis, w(!) zapis bewarunkowy, :q wyjscie ,q(!) bez zapisu wychodzi, e nazwapliku otworz plik,
+--> Ecp + u -undo, Esc +
+dd usuwa poprzednia linie  p potem kopiuje ile razy chcemy
+ 
+GIT(github np.) system kontroli wersji
+git-scm.com
+Lars Vogel -Git tutorial
+git clone + ssh wrzucam go lokalnie
+git init
+git bare - nie mozemy zmieniac, repo serwerowe
+
+git branch checkout -b developmentbranch // zakladanie galezi developerskiej
+git branch wyswietla nazwe galezi
+git branch "nazwa"  tworzy galaz develop
+git checkout "nazwa" przelacza do galezi develop
+
+dodawanie do repozytorium  zdalnego -- git config --global user.email"moj adres"
+git commit -m  "Dodalem 2 pliki"
+git push origin master
+q
+
+git add * dodaje wszystkie pliki lokalnie
+git commit -m "wrzuca zmiany lokalnie" potwierdzenie, ze chcemy wyslac(liczy sume kontrolna)
+git push origin devel wrzucamy na strone juz
+
+cp -r~/Downloads/solution/* ./ wrzucamy zawartosc wskazanego folderu do biezacego ./
+
+
+git show --> wyswietla co i kiedy dodalismy
+git log - wyswietla logi
+
+
+
+~/.gitconfig --> plik ukryty, ktory zawiera dane konfiguracji
+
+haslo do prezentacji: nazwa pliku bez rozszerzenia z malymi literami
+
+niebezpiecznik.pl
+
+vi plik.txt otwiera w VI(otwiera sie VIM WTEDY), jesli nadpiszemy w nowym pliku np. plik1.txt i dopiszemy linie do polecenie diff plik1 plik2 wyswietli nam roznice w liniach
+
+
+
+zadanie po kolei wykonanie:
+git clone ...
+echo  "cos" >README.md
+touch  LICENSE
+vi license
+git add*
+git commit -m "initial commit" a
+(foto)
+git merge  -- laczy nam z masterem
+git push origin --delte devel usuwa nam galaz devel
+
+
+
+git push origin -- pchamy merga na zewnatrz do mastera
+
+
+
+
+KOMPILATORY
+|||||||||||||||||||||||||||||||||||||||||
+LLVM -- oparty na vm
+GCC flex-analiza syntaktyczna i bison-analiza logiczna i przebiegu kodow
+CLANG -- ladniej wywala bledy, zrozumiale bledy, errory sa ladniejsze
+
+MAKEFILE
+tworzymy plik o nazwie MAKEFILE, Makefile, MakeFile albo makefile
+
+gcc -g debugowanie
+ll
+
+make clean-- wywoluje clean w Make'u
+$(NAME) -- wyciagamy wartosc 
+w OBJECTS wrzuca nam main.o
+w NAME wrzuca prog
+
+
+unlimit -c unlimited programy jak beda sie wywalaly beda wyrzucac pliki z errorami core
+
+gcore -- jesli obslugujemy watki, to wiemy gdzie watek sie zwiesil
+
+gdb odpala terminal --> wpisujemy: gdb thread appy all bt --> zrzuci nam stosy wywolan wszystkich watkow, gdzie sie teraz znajduja
+pthread_mutex_lock (program musi byc skompilowany z debugiem gcc-g)
+gdb <program> core <PID> (z gcore) debugger
+
+VALGRIND - do wyciekow pamieci
+odpalanie programow w valgrind
+$valgrind --leak -check=fykk ./prog  --> patrzy czy sa wycieki pamieci, jesli tak to je zaraportuje(pokazuje gdzie jest malloc a nie ma free)
+secfault --
