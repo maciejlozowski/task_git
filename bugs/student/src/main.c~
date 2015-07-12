@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include "person.h"
+
+int main(int argc, const char *argv[])
+{
+	const char* name = "Roman";
+
+	struct person* p = create("Romus");
+	//struct person* p = create(name); //my
+	p->set_name(p, name);
+	printf("Person name: %s\n", p->get_name(p));
+	destroy(p);
+
+	return 0;
+}
