@@ -37,7 +37,7 @@ struct person* create(const char* p_name) //pobieramy jako argument ciag charow
 {
 	struct person* result = (struct person*) malloc(sizeof(struct person)); //alokujemy pamiec dla wskaznika na strukture person
 	
-	result->pd = (struct person_data*) malloc(sizeof(struct person_data));//
+	result->pd = malloc(sizeof(char) * 10);//
 
 	result->set_name = &set_name; // jako ze set_name i get_name sa static musimy przypisac adresy do nich dla result->set_name, zeby lapal go w mainie (static maja zasieg lokalny w pliku)
 	result->get_name = &get_name; // 
@@ -53,9 +53,10 @@ struct person* create(const char* p_name) //pobieramy jako argument ciag charow
 void destroy(struct person* p_person)
 {
 	if (p_person) {
-		if (p_person->pd->name)
+		if (p_person->pd->name){
 			free(p_person->pd->name);
-
+			free(p_person->pd);			
+			}
 		free(p_person);
 		p_person = NULL; //my
 	}
